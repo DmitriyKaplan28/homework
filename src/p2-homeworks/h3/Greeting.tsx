@@ -31,8 +31,8 @@ const Greeting: React.FC<GreetingPropsType> = (
                 onBlur={setNameCallback}
             />
             <span>{error}</span>
-            <button onClick={addUser}>add</button>
-            <span>{totalUsers}</span>
+            <button onClick={addUser} className={s.someClass}>add</button>
+            <span className={s.someClass}>{totalUsers}</span>
         </div>
     )
 }

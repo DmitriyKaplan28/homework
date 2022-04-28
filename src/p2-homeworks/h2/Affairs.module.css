@@ -1,3 +1,9 @@
 .someClass {
-
+    display: grid;
+    max-width: 200px;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    margin-top: 50px;
+    margin-left: 5px;
 }
+

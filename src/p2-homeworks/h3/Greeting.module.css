@@ -1,7 +1,12 @@
-.someClass {
+.someStyle {
+    margin-left: 2px;
+}
 
+.someClass {
+    margin-left: 2px;
 }
 
 .error {
     border: 1px solid red;
+    margin-left: 2px;
 }
