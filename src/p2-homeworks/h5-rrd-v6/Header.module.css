@@ -1,10 +1,12 @@
 .defaultHeader{
     transform: translate(-155px, 0%);
+    transition-duration: 500ms;
     display: flex;
     flex-direction: row;
 }
 .defaultHeader:hover {
     transform: translate(0px, 0%);
+    transition-duration: 500ms;
     display: flex;
     flex-direction: row;
 }
