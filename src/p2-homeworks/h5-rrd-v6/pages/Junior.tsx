@@ -1,10 +1,12 @@
 import React from 'react'
+import HW7 from "../../h7/HW7";
+
 
 
 function Junior() {
     return (
         <div>
-            Скоро здесь что-то будет, оставайтесь с нами
+            <HW7 />
 
         </div>
     )
