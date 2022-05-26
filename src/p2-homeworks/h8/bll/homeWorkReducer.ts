@@ -1,15 +1,16 @@
-import {InitialStateType, UserType} from "../HW8";
+import { UserType} from "../HW8";
 
 type ActionType = ReturnType<typeof sortUpAC>
     | ReturnType<typeof check18AC>
     | ReturnType<typeof sortDownAC>
 
-export const homeWorkReducer = (state: UserType[], action: ActionType): InitialStateType => {
+export const homeWorkReducer = (state: UserType[], action: ActionType): UserType[] => {
     switch (action.type) {
         case 'sort': {
             if(action.payload === 'up') {
                 return  [...state.sort((a, b) => a.name.toLowerCase() <= b.name.toLowerCase() ? -1 : 1)]
             } else return [...state.sort((a, b) => a.name.toLowerCase() >= b.name.toLowerCase() ? -1 : 1)]
+        //else return 0
         }
         case 'check': {
             // need to fix
