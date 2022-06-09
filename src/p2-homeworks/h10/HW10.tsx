@@ -6,7 +6,6 @@ import {loadingAC} from "./bll/loadingReducer";
 import Preloader from "./bll/Preloader";
 
 function HW10() {
-    // useSelector, useDispatch
 
     const dispatch = useDispatch()
     const loading = useSelector<AppStoreType, boolean>(state => state.loading.isLoading)
@@ -14,15 +13,12 @@ function HW10() {
     const setLoading = () => {
         dispatch(loadingAC(true))
         setTimeout(() => dispatch(loadingAC(false)), 3000)
-        console.log('loading...')
     };
 
     return (
         <div>
             <hr/>
             homeworks 10
-
-            {/*should work (должно работать)*/}
             {loading
                 ? (
                     <div><Preloader /></div>
