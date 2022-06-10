@@ -26,7 +26,11 @@ function HW11() {
             <div>
                 <span>{value1}</span>
                 <SuperDoubleRange
-                    // сделать так чтоб value1 и value2 изменялось
+                    min={value1}
+                    max={value2}
+                    onChange={({ min, max }: { min: number; max: number }) =>
+                        console.log(`min = ${min}, max = ${max}`)
+                    }
                 />
                 <span>{value2}</span>
             </div>
