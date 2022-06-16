@@ -14,10 +14,28 @@
     color: aqua;
 }
 
-.some {
+.grey {
+    background: aliceblue;
+}
+
+.grey-text {
+    color: dimgrey;
+    text-shadow: 1px 1px 1px #000
+}
+.yellow {
+    background: yellow;
+}
+
+.yellow-text {
+    color: #0009ff;
+    text-shadow: 1px 1px 1px #07e8f3
+}
+
+.green {
     background: lightgreen;
 }
 
-.some-text {
-    color: darkslateblue;
+.green-text {
+    color: #060a79;
+    text-shadow: 1px 1px 1px #ff0000
 }

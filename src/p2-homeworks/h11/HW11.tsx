@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import SuperRange from './common/c7-SuperRange/SuperRange'
 import SuperDoubleRange from './common/c8-SuperDoubleRange/SuperDoubleRange'
+import AlternativeSuperRange from "./AlternativeSuperRange";
 
 function HW11() {
     const [value1, setValue1] = useState(0)
@@ -37,7 +38,12 @@ function HW11() {
 
             <hr/>
             {/*для личного творчества, могу проверить*/}
-            {/*<AlternativeSuperRange/>*/}
+            <AlternativeSuperRange
+                min={value1}
+                onChange={({ min}: { min: number }) =>
+                    console.log(`min = ${min}`)
+                }
+            />
             {/*<AlternativeSuperDoubleRange/>*/}
             <hr/>
         </div>
