@@ -11,8 +11,8 @@ function HW11() {
     /*const onChangeRange = (value: number) => {
         setValue1(value)
     }*/
-    const onChangeRange = (event: Event, newValue: number) => {
-        setValue1(newValue);
+    const onChangeRange = (event: Event, newValue: number | number[]) => {
+        setValue1(newValue as number);
     }
 
 
