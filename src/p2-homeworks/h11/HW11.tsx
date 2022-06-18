@@ -8,18 +8,25 @@ function HW11() {
     const [value1, setValue1] = useState(0)
     const [value2, setValue2] = useState(100)
 
+    const [value, setValue] = useState<number[]>([value1, value2]);
+
     /*const onChangeRange = (value: number) => {
         setValue1(value)
     }*/
-    const onChangeRange = (event: Event, newValue: number | number[]) => {
-        setValue1(newValue as number);
+    const onChangeRange = (newValue: number) => {
+        setValue((value) => {
+            const copy = [...value];
+            copy[0] = newValue
+            return copy
+        });
     }
 
 
-    const [value, setValue] = useState<number[]>([value1, value2]);
+
 
     const handleChange = (event: Event, newValue: number | number[]) => {
         setValue(newValue as number[]);
+
     };
 
     return (
@@ -53,11 +60,11 @@ function HW11() {
                     console.log(`min = ${min}`)
                 }
             />*/}
-            <AlternativeSuperDoubleRange min={value1}
+            {/*<AlternativeSuperDoubleRange min={value1}
                                          max={value2}
                                          onChange={({min, max}: { min: number; max: number }) =>
                                              console.log(`min = ${min}, max = ${max}`)
-                                         }/>
+                                         }/>*/}
             <hr/>
         </div>
     )

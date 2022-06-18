@@ -30,7 +30,7 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
                 value={value}
                 onChange={handleChange}
                 valueLabelDisplay="auto"
-                getAriaValueText={valuetext}
+                //getAriaValueText={valuetext}
             />
         </Box>
     )
