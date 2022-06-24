@@ -1,33 +1,38 @@
 import React, {useState} from 'react'
 import SuperRange from './common/c7-SuperRange/SuperRange'
 import SuperDoubleRange from './common/c8-SuperDoubleRange/SuperDoubleRange'
-import AlternativeSuperRange from "./AlternativeSuperRange";
-import AlternativeSuperDoubleRange from "./AlternativeSuperDoubleRange";
+
 
 function HW11() {
-    const [value1, setValue1] = useState(0)
-    const [value2, setValue2] = useState(100)
+
+    const min = 0
+    const max = 100
+
+    const [value1, setValue1] = useState<number>(min)
+    const [value2, setValue2] = useState<number>(max)
 
     const [value, setValue] = useState<number[]>([value1, value2]);
 
     /*const onChangeRange = (value: number) => {
         setValue1(value)
     }*/
-    const onChangeRange = (newValue: number) => {
+    /*const onChangeRange = (newValue: number) => {
         setValue((value) => {
             const copy = [...value];
             copy[0] = newValue
             return copy
         });
+    }*/
+    const handleChange = ([value1, value2]: [number, number]) => {
+        setValue1(value1)
+        setValue2(value2)
     }
 
 
-
-
-    const handleChange = (event: Event, newValue: number | number[]) => {
+    /*const handleChange = (event: Event, newValue: number | number[]) => {
         setValue(newValue as number[]);
 
-    };
+    };*/
 
     return (
         <div>
@@ -37,16 +42,19 @@ function HW11() {
             {/*should work (должно работать)*/}
             <div>
                 <span>{value1}</span>
-                <SuperRange value={value1}
-                            onChangeRange={onChangeRange}
+                <SuperRange value1={value1}
+                            value2={value2}
+                            onChangeRange={setValue1}
+                            onChangeRange2={setValue2}
                     // сделать так чтоб value1 изменялось
                 />
             </div>
 
             <div>
                 <span>{value1}</span>
-                <SuperDoubleRange value={value}
-                                  handleChange={handleChange}
+                <SuperDoubleRange value={[value1, value2]}
+                                  onChangeRange={handleChange}
+
                     //valuetext={valuetext}
                 />
                 <span>{value2}</span>

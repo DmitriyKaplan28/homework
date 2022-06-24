@@ -1,5 +1,4 @@
-import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from 'react'
-import s from './SuperRange.module.css'
+import React, { DetailedHTMLProps, InputHTMLAttributes} from 'react'
 import {Box, Slider} from "@mui/material";
 
 // тип пропсов обычного инпута
@@ -8,8 +7,13 @@ type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 // здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
 // (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
 type SuperRangePropsType = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном инпуте
-    onChangeRange: (newValue: number ) => void
-    value: number
+    value1: number
+    value2: number
+    onChangeRange: (value: number) => void
+    onChangeRange2: (value: number) => void
+    minValue?: number
+    maxValue?: number
+    disabled?: boolean
 };
 
 const SuperRange: React.FC<SuperRangePropsType> = (
@@ -17,7 +21,9 @@ const SuperRange: React.FC<SuperRangePropsType> = (
         type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
         onChange, onChangeRange,
         className,
-        value,
+        value,value1,
+        value2, onChangeRange2, minValue,
+        maxValue, disabled,
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {
@@ -27,24 +33,27 @@ const SuperRange: React.FC<SuperRangePropsType> = (
         onChangeRange
     }*/
 
-    const onChangeCallback = (event: Event, value: number | number[]) => {
-        if (typeof value === 'number') {
-            onChangeRange(value)
-        }}
+    const onChangeCallback = (event: Event, newValue: number | number[]) => {
+        onChangeRange && onChangeRange(newValue as number)
+        if (value1 && value2 && value2 < value1 + 2 && value2 !== 100) {
+            onChangeRange2 && onChangeRange2(value1)
+        }
+    }
 
     /*const finalRangeClassName = `${s.range} ${className ? className : ''}`*/
-    function valuetext(value: number) {
+   /* function valuetext(value: number) {
         return `${value}°C`;
-    }
+    }*/
 
     return (
 
         <Box sx={{width: 300}}>
             <Slider getAriaLabel={() => 'Temperature range'}
-                    value={value}
+                    value={value1}
                     onChange={onChangeCallback}
-                    valueLabelDisplay="auto"
-                    //getAriaValueText={valuetext}
+                    disabled={disabled}
+                    min={minValue ? minValue : 0}
+                    max={maxValue ? maxValue : 100}
             />
         </Box>
         /*<>
